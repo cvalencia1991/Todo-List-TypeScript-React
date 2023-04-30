@@ -1,43 +1,39 @@
-
 import React, { useState } from "react";
-import "./App.css";
-import { type } from "os";
+import "./index.css";
+import Taskview from "./components/Taskview";
+import { ITask } from "./interfaces/ITask";
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
-interface ITask {
-  name:string,
-  done:boolean
-}
-
-
 const App = (): JSX.Element => {
+  const [newTask, setsnewTask] = useState<string>("");
+  const [tasks, setTasks] = useState<ITask[]>([]);
 
-const[newTask, setsnewTask] = useState<string>("");
-const [tasks, setTasks] = useState<ITask[]>([]);
-
-  const handleSubmit = (e:FormElement) =>{
+  const handleSubmit = (e: FormElement) => {
     e.preventDefault();
     addTasks(newTask);
-    console.log(tasks);
+    // console.log(tasks);
   };
 
-  const addTasks =  (name:string) =>{
-    const newtasks = [...tasks,{name,done:false}];
+  const addTasks = (name: string) => {
+    const newtasks = [...tasks, { name, done: false }];
     setTasks(newtasks);
   };
 
   return (
     <>
-      <form onSubmit ={handleSubmit}>
-        <input type="text"  onChange={e => setsnewTask(e.target.value)} value={newTask}/>
-        <button>Save</button>
+      <form onSubmit={handleSubmit}>
+        <div className="flex m-3 items-center  justify-center">
+          <input
+            className="appearance-none block bg-gray-200 text-gray-700 h-10 border rounded leading-tight focus:outline-none focus:bg-white"
+            type="text"
+            onChange={(e) => setsnewTask(e.target.value)}
+            value={newTask}
+          />
+          <button>Save</button>
+        </div>
       </form>
-      {
-        tasks.map((t:ITask, index:number)=>{
-          return <h1 key={index}> {t.name}</h1>;
-        })
-      }
+      <Taskview tasks={tasks} />
     </>
   );
 };
