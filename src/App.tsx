@@ -12,7 +12,6 @@ const App = (): JSX.Element => {
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
     addTasks(newTask);
-    // console.log(tasks);
   };
 
   const addTasks = (name: string) => {

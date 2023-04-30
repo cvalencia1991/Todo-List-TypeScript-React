@@ -9,9 +9,11 @@ const Taskview = ({tasks}:Props) => {
   return (
     <>
     {tasks.map((value)=>{
+      return(
       <div>
         <h1>{value.name}</h1>
-      </div>;
+      </div>
+      );
     })}
     </>
   );
