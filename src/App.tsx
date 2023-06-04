@@ -15,8 +15,10 @@ const App = (): JSX.Element => {
   };
 
   const addTasks = (name: string) => {
-    const newtasks = [...tasks, { name, done: false }];
-    setTasks(newtasks);
+    if (name !==  ""){
+      const newtasks: ITask[] = [...tasks, { name, done: false }];
+      setTasks(newtasks);
+    }
   };
 
   return (
@@ -29,10 +31,12 @@ const App = (): JSX.Element => {
             onChange={(e) => setsnewTask(e.target.value)}
             value={newTask}
           />
-          <button>Save</button>
+          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Save</button>
         </div>
       </form>
-      <Taskview tasks={tasks} />
+      <main>
+        <Taskview tasks={tasks} />
+      </main>
     </>
   );
 };
