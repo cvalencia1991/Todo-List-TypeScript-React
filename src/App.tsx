@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./index.css";
+import "./App.css";
 import Taskview from "./components/Taskview";
 import { ITask } from "./interfaces/ITask";
 

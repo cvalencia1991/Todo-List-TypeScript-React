@@ -7,14 +7,13 @@ const Taskview = ({ tasks }: Props) => {
   console.log(tasks);
   return (
     <>
-      {tasks.map((value) => {
-        return (
-          <div>
-            <h1>{value.name}</h1>
-            <button>delete</button>
-          </div>
-        );
-      })}
+    <ul>
+          {tasks.map((value,index) =>(
+            <li key={index} className="flex items-center align-center">
+            <h1>{value.name}</h1><button>delete</button>
+          </li>
+          ))}
+        </ul>
     </>
   );
 };
