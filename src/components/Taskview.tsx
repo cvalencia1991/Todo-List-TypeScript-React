@@ -1,19 +1,13 @@
 import { ITask } from "../interfaces/ITask";
+import TaskCard from "./TaskCard";
 interface Props {
   tasks: ITask[];
 }
 
 const Taskview = ({ tasks }: Props) => {
-  console.log(tasks);
   return (
     <>
-    <ul>
-          {tasks.map((value,index) =>(
-            <li key={index} className="flex items-center align-center">
-            <h1>{value.name}</h1><button>delete</button>
-          </li>
-          ))}
-        </ul>
+          {tasks.map((task) => <TaskCard task={task} /> )}
     </>
   );
 };

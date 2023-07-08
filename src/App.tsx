@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./App.css";
 import Taskview from "./components/Taskview";
 import { ITask } from "./interfaces/ITask";
+import TaskForm from "./components/TaskForm";
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
 const App = (): JSX.Element => {
-  const [newTask, setsnewTask] = useState<string>("");
+  const [newTask, setnewTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
 
   const handleSubmit = (e: FormElement) => {
@@ -23,18 +24,8 @@ const App = (): JSX.Element => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="flex m-3 items-center  justify-center">
-          <input
-            className="appearance-none block bg-gray-200 text-gray-700 h-10 border rounded leading-tight focus:outline-none focus:bg-white"
-            type="text"
-            onChange={(e) => setsnewTask(e.target.value)}
-            value={newTask}
-          />
-          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Save</button>
-        </div>
-      </form>
       <main>
+        <TaskForm  handleSubmit={handleSubmit} setnewTask={setnewTask} newTask={newTask} />
         <Taskview tasks={tasks} />
       </main>
     </>
