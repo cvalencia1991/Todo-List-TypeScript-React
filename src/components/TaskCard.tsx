@@ -12,7 +12,6 @@ const TaskCard = ({task}:TaskCardProps) => {
             <p>{task.id}</p>
             <h2>{task.done}</h2>
             <button>Delete</button>
-
         </div>
     );
 };
