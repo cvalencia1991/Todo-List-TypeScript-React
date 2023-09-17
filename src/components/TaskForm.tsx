@@ -1,10 +1,5 @@
 
-interface TaskFormProps {
-  handleSubmit: (e: any) => void;
-  setnewTask: (value: string) => void;
-  newTask: string;
-}
-
+import { TaskFormProps } from "../interfaces/ITask";
 
 const TaskForm: React.FC<TaskFormProps> = ({ handleSubmit, setnewTask, newTask }) => {
     return(
