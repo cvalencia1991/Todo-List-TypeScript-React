@@ -6,9 +6,9 @@ interface Props {
 
 const Taskview = ({ tasks }: Props) => {
   return (
-    <>
-          {tasks.map((task) => <TaskCard task={task} /> )}
-    </>
+    <ul>
+          {tasks.map((task) => <li key={task.id}><TaskCard task={task} /></li> )}
+    </ul>
   );
 };
 

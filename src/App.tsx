@@ -17,7 +17,7 @@ const App = (): JSX.Element => {
 
   const addTasks = (name: string) => {
     if (name !==  ""){
-      const newtasks: ITask[] = [...tasks, { name, done: false }];
+      const newtasks: ITask[] = [...tasks, { name, done: false, id: Math.random()}];
       setTasks(newtasks);
     }
   };
