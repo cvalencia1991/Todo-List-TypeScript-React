@@ -22,11 +22,15 @@ const App = (): JSX.Element => {
     }
   };
 
+  const deleteTasks = (id: number) => {
+    setTasks(prev => prev.filter(task => task.id !== id));
+  };
+
   return (
     <>
       <main>
         <TaskForm  handleSubmit={handleSubmit} setnewTask={setnewTask} newTask={newTask} />
-        <Taskview tasks={tasks} />
+        <Taskview  handleDelete={deleteTasks} tasks={tasks} />
       </main>
     </>
   );

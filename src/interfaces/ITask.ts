@@ -4,7 +4,7 @@ import { FormEventHandler } from "react";
 
 export interface ITask {
   name: string;
-  id?: number;
+  id: number;
   done: boolean;
 }
 

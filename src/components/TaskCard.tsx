@@ -3,15 +3,15 @@ import { ITask } from "../interfaces/ITask";
 
 interface TaskCardProps {
     task: ITask;
+    handleDelete: (id: number) => void
 }
 
-const TaskCard = ({task}:TaskCardProps) => {
+const TaskCard = ({task, handleDelete}:TaskCardProps) => {
     return (
         <div>
             <h1>{task.name}</h1>
-            <p>{task.id}</p>
             <h2>{task.done}</h2>
-            <button>Delete</button>
+            <button onClick={handleDelete.bind(null,task.id)}>Delete</button>
         </div>
     );
 };
