@@ -4,13 +4,11 @@ import Taskview from "./components/Taskview";
 import { ITask } from "./interfaces/ITask";
 import TaskForm from "./components/TaskForm";
 
-type FormElement = React.FormEvent<HTMLFormElement>;
-
 const App = (): JSX.Element => {
   const [newTask, setnewTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
 
-  const handleSubmit = (e: FormElement) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addTasks(newTask);
   };
@@ -22,15 +20,16 @@ const App = (): JSX.Element => {
     }
   };
 
-  const deleteTasks = (id: number) => {
+
+  const handleDelete = (id: number) => {
     setTasks(prev => prev.filter(task => task.id !== id));
   };
 
   return (
     <>
       <main>
-        <TaskForm  handleSubmit={handleSubmit} setnewTask={setnewTask} newTask={newTask} />
-        <Taskview  handleDelete={deleteTasks} tasks={tasks} />
+        <TaskForm  handleSubmit={handleSubmit}  setnewTask={setnewTask} newTask={newTask} />
+        <Taskview  handleDelete={handleDelete}  tasks={tasks} />
       </main>
     </>
   );

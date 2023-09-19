@@ -15,3 +15,7 @@ export interface TaskFormProps {
 }
 
 
+export interface View {
+  handleDelete: (id: number) => void;
+  task: ITask[];
+}

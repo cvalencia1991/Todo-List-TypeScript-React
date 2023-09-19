@@ -2,16 +2,18 @@
 import { ITask } from "../interfaces/ITask";
 
 interface TaskCardProps {
-    task: ITask;
+    task: ITask
     handleDelete: (id: number) => void
 }
 
-const TaskCard = ({task, handleDelete}:TaskCardProps) => {
+const TaskCard = ({task, handleDelete }:TaskCardProps) => {
+
+
     return (
         <div>
+            {/* <input type="checkbox" onChange={(e) =>handleDone(e.target.checked)} /> */}
             <h1>{task.name}</h1>
-            <h2>{task.done}</h2>
-            <button onClick={handleDelete.bind(null,task.id)}>Delete</button>
+            <button onClick={() => handleDelete(task.id)}>Delete</button>
         </div>
     );
 };
