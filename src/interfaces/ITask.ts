@@ -1,4 +1,5 @@
 
+import { keyboardKey } from "@testing-library/user-event";
 import { FormEventHandler } from "react";
 
 
@@ -10,6 +11,7 @@ export interface ITask {
 
 export interface TaskFormProps {
   handleSubmit: FormEventHandler<HTMLFormElement>;
+  handlekeypress: (e: keyboardKey) => void
   setnewTask: (value: string) => void;
   newTask: string;
 }

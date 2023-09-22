@@ -3,8 +3,11 @@ import "./App.css";
 import Taskview from "./components/Taskview";
 import { ITask } from "./interfaces/ITask";
 import TaskForm from "./components/TaskForm";
+import TodoHead from "./components/TodoHead";
+
 
 const App = (): JSX.Element => {
+  const [keyB, setKeyB] = useState(null);
   const [newTask, setnewTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
 
@@ -13,8 +16,13 @@ const App = (): JSX.Element => {
     addTasks(newTask);
   };
 
+  const handlekeypressed = (event) =>{
+    setKeyB(event.key);
+  };
+
+
   const addTasks = (name: string) => {
-    if (name !==  ""){
+    if (name !==  "" && keyB === "Enter"){
       const newtasks: ITask[] = [...tasks, { name, done: false, id: Math.random()}];
       setTasks(newtasks);
     }
@@ -27,9 +35,10 @@ const App = (): JSX.Element => {
 
   return (
     <>
+      <TodoHead/>
       <main>
-        <TaskForm  handleSubmit={handleSubmit}  setnewTask={setnewTask} newTask={newTask} />
-        <Taskview  handleDelete={handleDelete}  tasks={tasks} />
+        <TaskForm handlekeypress={handlekeypressed} handleSubmit={handleSubmit}  setnewTask={setnewTask} newTask={newTask} />
+        <Taskview handleDelete={handleDelete}  tasks={tasks} />
       </main>
     </>
   );
