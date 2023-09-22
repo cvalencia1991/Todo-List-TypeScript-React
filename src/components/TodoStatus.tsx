@@ -2,7 +2,9 @@
 const TodoStatus = () => {
     return (
         <div>
-        <h1>TodoStatus</h1>
+        <button className="bg-gray-200">All</button>
+        <button>Active</button>
+        <button>Complete</button>
         </div>
     );
     };

@@ -1,13 +1,7 @@
-import { ITask } from "../interfaces/ITask";
+import { Props } from "../interfaces/ITask";
 import TaskCard from "./TaskCard";
 import TodoStatus from "./TodoStatus";
 
-
-interface Props {
-  tasks: ITask[];
-  handleDelete: (id: number) => void
-
-}
 
 const Taskview = ({ tasks, handleDelete }: Props) => {
   return (

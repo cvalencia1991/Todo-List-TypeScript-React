@@ -1,4 +1,5 @@
 
+import IconCross from "../icons/Iconcross";
 import { ITask } from "../interfaces/ITask";
 
 
@@ -15,7 +16,7 @@ const TaskCard = ({task, handleDelete,  }:TaskCardProps) => {
             {/* <input type="checkbox" onChange={(e) =>handleDone(e.target.checked)} /> */}
             <h1>{task.name}</h1>
             <button onClick={() => handleDelete(task.id)}>
-            X
+            <IconCross/>
             </button>
         </div>
     );

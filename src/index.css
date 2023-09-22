@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.headerTodo {
+  background-color: #f5f5f5;
+  background-image: url("./images/bg-desktop-light.jpg");
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #4d4d4d;
+}

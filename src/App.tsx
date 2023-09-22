@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import Taskview from "./components/Taskview";
 import { ITask } from "./interfaces/ITask";
 import TaskForm from "./components/TaskForm";
@@ -7,7 +6,7 @@ import TodoHead from "./components/TodoHead";
 
 
 const App = (): JSX.Element => {
-  const [keyB, setKeyB] = useState(null);
+  const [keyB, setKeyB] = useState<string>("");
   const [newTask, setnewTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
 
@@ -16,18 +15,17 @@ const App = (): JSX.Element => {
     addTasks(newTask);
   };
 
-  const handlekeypressed = (event) =>{
+  const handlekeypressed = (event: React.KeyboardEvent<HTMLInputElement>): void =>{
     setKeyB(event.key);
   };
-
 
   const addTasks = (name: string) => {
     if (name !==  "" && keyB === "Enter"){
       const newtasks: ITask[] = [...tasks, { name, done: false, id: Math.random()}];
       setTasks(newtasks);
+      setnewTask("");
     }
   };
-
 
   const handleDelete = (id: number) => {
     setTasks(prev => prev.filter(task => task.id !== id));
@@ -45,3 +43,5 @@ const App = (): JSX.Element => {
 };
 
 export default App;
+
+

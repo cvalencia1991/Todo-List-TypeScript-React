@@ -5,8 +5,8 @@ module.exports = {
   ],
   theme: {
     screens: {
-      "mobile": "375px",
-      "desktop": "1440px"
+      "mb": "375px",
+      "dk": "1440px"
     },
     colors: {
       "very_light_gray": "hsl(236, 33%, 92%)",
@@ -20,6 +20,14 @@ module.exports = {
       "light_grayish_blue_hover": "hsl(236, 33%, 92%)",
       "very_dark_grayish_blue_hover": "hsl(233, 14%, 35%)",
       "very_dark_grayish_blue_hover_2": "hsl(237, 14%, 26%)",
+    },
+  },
+  extend: {
+    backgroundImage: {
+      "desk-light": "url('/src/images/bg-desktop-light.jpg')",
+      "desk-dark": "url('/src/images/bg-desktop-dark.jpg')",
+      "mobile-light": "url('/images/bg-mobile-light.jpg')",
+      "mobile-dark": "url('/images/bg-mobile-dark.jpg')",
     },
   },
   plugins: [],
