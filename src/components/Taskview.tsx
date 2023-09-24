@@ -8,7 +8,8 @@ const Taskview = ({ tasks, handleDelete }: Props) => {
     <div className="flex items-center flex-col ">
     <ul className="rounded">
       {tasks.map((task) =>
-      <li key={task.id}>
+      <li className="flex justify-between border items-center bg-[--very-light-gray] rounded h-4 p-6 desktop:w-[40em] mobile:w-80"
+      key={task.id}>
         <TaskCard handleDelete={handleDelete}
         task={task} />
       </li>

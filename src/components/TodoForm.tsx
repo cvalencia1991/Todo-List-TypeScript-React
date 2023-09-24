@@ -40,7 +40,7 @@ const TodoForm = () => {
 
     return (
     <>
-        <div className="flex items-center justify-around bg-no-repeat h-72 w-screen mobile:bg-mobile-light desktop:bg-desktop-light bg-cover">
+        <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen mobile:bg-mobile-light desktop:bg-desktop-light bg-cover">
             <div className="flex justify-center  gap-4 flex-col desktop:w-[40em] mobile:w-80">
             <div className='flex justify-between items-center'>
                 <h1 className=" text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] font-josefin">TODO</h1>
@@ -48,9 +48,9 @@ const TodoForm = () => {
             </div>
             <TaskForm handlekeypress={handlekeypressed} handleSubmit={handleSubmit}  setNewTask={setNewTask} newTask={newTask} />
             </div>
-            <div className="flex justify-center items-center ">
+        </div>
+        <div className="flex relative -top-4 justify-center items-center w-full">
                 <Taskview tasks={tasks} handleDelete={handleDelete}/>
-            </div>
         </div>
     </>
     );
