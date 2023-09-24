@@ -1,6 +1,7 @@
 
-import { KeyboardEvent, FormEventHandler } from "react";
 
+
+import { Dispatch, KeyboardEvent, SetStateAction } from "react";
 
 export interface ITask {
   name: string;
@@ -8,21 +9,27 @@ export interface ITask {
   done: boolean;
 }
 
+export interface Task {
+  name: string;
+  done: boolean;
+}
+
 export interface Props {
   tasks: ITask[];
-  handleDelete: (id: number) => void
-
+  handleDelete: (id: number) => void;
 }
 
-export interface TaskFormProps {
-  handleSubmit: FormEventHandler<HTMLFormElement>;
-  setnewTask: (value: string) => void;
+export type TaskFormType = {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handlekeypress: (e: KeyboardEvent<HTMLInputElement>) => void;
-  newTask: string;
-}
-
+  setNewTask: Dispatch<SetStateAction<{ name: string; done: boolean; }>>;
+  newTask: Task;
+};
 
 export interface View {
   handleDelete: (id: number) => void;
   task: ITask[];
+  newTask: string;
 }
+
+export type HandleForm = React.FormEvent<HTMLFormElement>

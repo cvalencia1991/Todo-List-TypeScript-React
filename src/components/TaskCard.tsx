@@ -8,12 +8,18 @@ interface TaskCardProps {
     handleDelete: (id: number) => void
 }
 
-const TaskCard = ({task, handleDelete,  }:TaskCardProps) => {
-
+const TaskCard = ({task, handleDelete }:TaskCardProps) => {
 
     return (
-        <div>
-            {/* <input type="checkbox" onChange={(e) =>handleDone(e.target.checked)} /> */}
+        <div className="flex justify-around bg-white border-b-4 w-[20em]">
+            <form>
+            <input
+                className="appearance-none w-5 h-5 ml-4 mr-4 cursor-pointer rounded-full border border-[--grayish-blue] checked:bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] "
+            type="checkbox"
+            checked={task.done}
+        />
+            </form>
+          
             <h1>{task.name}</h1>
             <button onClick={() => handleDelete(task.id)}>
             <IconCross/>
