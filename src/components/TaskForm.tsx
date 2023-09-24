@@ -7,7 +7,7 @@ const TaskForm: React.FC<TaskFormType> = ({ handleSubmit, handlekeypress, setNew
   <form onSubmit={handleSubmit}>
     <div className="container flex rounded bg-[--very-light-gray] items-center justify-evenly">
         <input
-          className="appearance-none w-5 h-5 ml-4 mr-4 cursor-pointer rounded-full border border-[--grayish-blue] checked:bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] "
+          className="appearance-none w-5 h-5 ml-4 mr-4 cursor-pointer rounded-full border border-[--grayish-blue] checked:bg-gradient-to-r from-[--left-gradient] to-[--right-gradient]"
           type="checkbox"
           onChange={(e) => setNewTask({ ...newTask, done: e.target.checked })}
           checked={newTask.done}

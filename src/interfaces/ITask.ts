@@ -1,7 +1,4 @@
-
-
-
-import { Dispatch, KeyboardEvent, SetStateAction } from "react";
+import React from "react";
 
 export interface ITask {
   name: string;
@@ -19,10 +16,15 @@ export interface Props {
   handleDelete: (id: number) => void;
 }
 
+export interface TodoStatusProps {
+  tasks: Task[]
+}
+
+
 export type TaskFormType = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  handlekeypress: (e: KeyboardEvent<HTMLInputElement>) => void;
-  setNewTask: Dispatch<SetStateAction<{ name: string; done: boolean; }>>;
+  handlekeypress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  setNewTask: (value: React.SetStateAction<Task>) => void;
   newTask: Task;
 };
 
