@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TaskForm from "./TaskForm";
-import { ITask, HandleForm } from "../interfaces/ITask";
+import { ITask, HandleForm, Task } from "../interfaces/ITask";
 import IconMoon from "../icons/icon-moon";
 import Taskview from "./Taskview";
 import Iconsun from "../icons/icon-sun";
@@ -14,21 +14,22 @@ const TodoForm = () => {
     };
 
     const [keyB, setKeyB] = useState<string>("");
-    const [newTask, setNewTask] = useState(initialTaskState);
+    const [newTask, setNewTask] = useState<Task>(initialTaskState);
     const [tasks, setTasks] = useState<ITask[]>([]);
+    const body = document.querySelector("body") as HTMLBodyElement;
+    const taskState: ITask[] = tasks;
 
-    const [theme, setTheme] = useState(()=>{
-        if(window.matchMedia("(prefers-color-scheme: dark)").matches){
-            return "dark";
-        }
-        return "light";
+    const [theme, setTheme] = useState<string>(()=>{
+       return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     });
 
     useEffect(() => {
         if(theme === "dark"){
-            document.documentElement.classList.add("dark");
+            body.classList.add("dark");
+            body.classList.add("bg-[#161722]");
         }else{
-            document.documentElement.classList.remove("dark");
+            body.classList.remove("dark");
+            body.classList.remove("bg-[#161722]");
         }
     }, [theme]);
 
@@ -59,9 +60,42 @@ const TodoForm = () => {
         setTheme(theme === "light" ? "dark" : "light");
     };
 
+    const handleDone = (id: number) => {
+        const newtasks: ITask[] = tasks.map((task) => {
+            if (task.id === id) {
+                task.done = !task.done;
+            }
+            return task;
+        });
+        setTasks(newtasks);
+    };
+
+
+
+    const activeTask = () => {
+        const newtasks: ITask[] = taskState.filter((task) => task.done === false);
+        setTasks(newtasks);
+    };
+
+    const completedTask = () => {
+        const newtasks: ITask[] = taskState.filter((task) => task.done === true);
+        setTasks(newtasks);
+    };
+
+    const allTask = () => {
+        const newtasks: ITask[] = taskState.filter((task) => task.done === true || task.done === false);
+        setTasks(newtasks);
+    };
+
+    const clearCompleted = () => {
+        const newtasks: ITask[] = taskState.filter((task) => task.done === false);
+        setTasks(newtasks);
+    };
+
+
     return (
     <>
-        <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen mobile:bg-mobile-light desktop:bg-desktop-light bg-cover ">
+        <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen mobile:bg-mobile-light desktop:bg-desktop-light bg-cover dark:desktop:bg-desktop-dark">
             <div className="flex justify-center  gap-4 flex-col desktop:w-[40em] mobile:w-80">
             <div className='flex justify-between items-center'>
                 <h1 className=" text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] font-josefin">TODO</h1>
@@ -71,7 +105,15 @@ const TodoForm = () => {
             </div>
         </div>
         <div className="flex relative -top-4 justify-center items-center w-full">
-            <Taskview tasks={tasks} handleDelete={handleDelete}/>
+            <Taskview
+                activeTask={activeTask}
+                completedTask={completedTask}
+                allTask={allTask}
+                clearCompleted={clearCompleted}
+                handleDone={handleDone}
+                tasks={tasks}
+                handleDelete={handleDelete}
+            />
         </div>
     </>
     );

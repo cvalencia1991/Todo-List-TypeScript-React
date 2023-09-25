@@ -11,13 +11,23 @@ export interface Task {
   done: boolean;
 }
 
-export interface Props {
+export interface TaskItem {
   tasks: ITask[];
   handleDelete: (id: number) => void;
+  handleDone: (id: number) => void;
+  activeTask: () => void;
+  completedTask: () => void;
+  allTask: () => void;
+  clearCompleted: () => void;
+
 }
 
 export interface TodoStatusProps {
   tasks: Task[]
+  activeTask: () => void;
+  completedTask: () => void;
+  allTask: () => void;
+  clearCompleted: () => void;
 }
 
 
