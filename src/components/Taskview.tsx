@@ -9,16 +9,19 @@ const Taskview = ({ tasks, activeTask, completedTask,allTask,clearCompleted, han
   return (
     <div className="flex items-center flex-col ">
     <ul className="rounded">
-      {tasks.map((task) =>
-      <li className="flex items-center justify-between border px-4 bg-white h-12  desktop:w-[40em] mobile:w-80 dark:bg-[--very-dark-desaturated-blue] dark:border-[--light-grayish-blue]"
-      key={task.id}>
+      {tasks.map((task,index) =>
+      <li
+        className={`flex items-center justify-between border-b px-4 bg-white h-12
+        desktop:w-[40em] mobile:w-80 dark:bg-[--very-dark-desaturated-blue]
+        dark:border-[--light-grayish-blue] ${index === 0 ? "first:rounded-t" : ""}`}
+        key={task.id}>
         <TaskCard handleDelete={handleDelete}
         handleDone={handleDone}
         task={task} />
       </li>
       )}
     </ul>
-      {tasks.length > 0 &&
+      {tasks.length >= 0 &&
       <TodoStatus
       activeTask={activeTask}
       completedTask={completedTask}

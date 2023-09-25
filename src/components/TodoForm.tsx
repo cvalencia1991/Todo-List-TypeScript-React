@@ -12,16 +12,30 @@ const TodoForm = () => {
         name: "",
         done: false,
     };
+    const body = document.querySelector("body") as HTMLBodyElement;
 
     const [keyB, setKeyB] = useState<string>("");
     const [newTask, setNewTask] = useState<Task>(initialTaskState);
     const [tasks, setTasks] = useState<ITask[]>([]);
-    const body = document.querySelector("body") as HTMLBodyElement;
-    const taskState: ITask[] = tasks;
+    const [tasksState,setTaskState] = useState<ITask[]>([]);
 
     const [theme, setTheme] = useState<string>(()=>{
        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     });
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasksState));
+    }, [tasksState]);
+
+    useEffect(() => {
+        const localTasks = localStorage.getItem("tasks");
+        if(localTasks){
+            setTasks(JSON.parse(localTasks));
+        }
+    }
+    ,[]);
+
+
 
     useEffect(() => {
         if(theme === "dark"){
@@ -47,6 +61,7 @@ const TodoForm = () => {
     if (name !==  "" && keyB === "Enter"){
         const newtasks: ITask[] = [...tasks, { name, done, id: Math.random()}];
         setTasks(newtasks);
+        setTaskState(newtasks);
         setNewTask({name: "", done: false});
         }
     };
@@ -71,24 +86,23 @@ const TodoForm = () => {
     };
 
 
-
     const activeTask = () => {
-        const newtasks: ITask[] = taskState.filter((task) => task.done === false);
+        const newtasks: ITask[] = tasks.filter((task) => task.done === false);
         setTasks(newtasks);
     };
 
     const completedTask = () => {
-        const newtasks: ITask[] = taskState.filter((task) => task.done === true);
+        const newtasks: ITask[] = tasks.filter((task) => task.done === true);
         setTasks(newtasks);
     };
 
     const allTask = () => {
-        const newtasks: ITask[] = taskState.filter((task) => task.done === true || task.done === false);
-        setTasks(newtasks);
+        setTasks(tasksState);
     };
 
     const clearCompleted = () => {
-        const newtasks: ITask[] = taskState.filter((task) => task.done === false);
+        const newtasks: ITask[] = tasks.filter((task) => task.done === false);
+        setTaskState(newtasks);
         setTasks(newtasks);
     };
 
