@@ -16,8 +16,14 @@ const TodoForm = () => {
 
     const [keyB, setKeyB] = useState<string>("");
     const [newTask, setNewTask] = useState<Task>(initialTaskState);
-    const [tasks, setTasks] = useState<ITask[]>([]);
-    const [tasksState,setTaskState] = useState<ITask[]>([]);
+    const [tasks, setTasks] = useState<ITask[]>(()=>{
+        const localTasks = localStorage.getItem("tasks");
+        return localTasks ? JSON.parse(localTasks) : [];
+    });
+    const [tasksState,setTaskState] = useState<ITask[]>(()=>{
+        const localTasks = localStorage.getItem("tasks");
+        return localTasks ? JSON.parse(localTasks) : [];
+    });
 
     const [theme, setTheme] = useState<string>(()=>{
        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
