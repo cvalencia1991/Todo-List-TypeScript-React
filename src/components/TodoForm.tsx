@@ -115,7 +115,7 @@ const TodoForm = () => {
 
     return (
     <>
-        <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen mobile:bg-mobile-light desktop:bg-desktop-light bg-cover dark:desktop:bg-desktop-dark">
+        <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen mobile:bg-mobile-light dark:mobile:bg-mobile-dark desktop:bg-desktop-light bg-cover dark:desktop:bg-desktop-dark">
             <div className="flex justify-center  gap-4 flex-col desktop:w-[40em] mobile:w-80">
             <div className='flex justify-between items-center'>
                 <h1 className=" text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] font-josefin">TODO</h1>
