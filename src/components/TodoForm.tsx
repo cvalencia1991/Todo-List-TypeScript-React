@@ -74,6 +74,7 @@ const TodoForm = () => {
     const handleDelete = (id: number) => {
         const newtasks: ITask[] = tasks.filter((task) => task.id !== id);
         setTasks(newtasks);
+        setTaskState(newtasks);
     };
 
     const handleTheme = () => {
