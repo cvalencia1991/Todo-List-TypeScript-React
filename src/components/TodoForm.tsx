@@ -42,7 +42,6 @@ const TodoForm = () => {
     ,[]);
 
 
-
     useEffect(() => {
         if(theme === "dark"){
             body.classList.add("dark");
@@ -119,7 +118,10 @@ const TodoForm = () => {
             <div className="flex justify-center  gap-4 flex-col desktop:w-[40em] mobile:w-80">
             <div className='flex justify-between items-center'>
                 <h1 className=" text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] font-josefin">TODO</h1>
-                <button onClick={handleTheme}>{theme == "light" ? <IconMoon/> : <Iconsun/>}</button>
+                <button
+                    onClick={handleTheme}>
+                    {theme == "light" ? <IconMoon/> : <Iconsun/>}
+                </button>
             </div>
             <TaskForm handlekeypress={handlekeypressed} handleSubmit={handleSubmit}  setNewTask={setNewTask} newTask={newTask} />
             </div>
