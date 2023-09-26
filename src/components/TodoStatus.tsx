@@ -9,7 +9,7 @@ const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:Tod
             justify-between bg-[--very-light-gray] text-[--very-dark-grayish-blue]
             h-12 items-center px-4 relative desktop:${tasks.length === 0 ? "w-[40em]": "w-full"}
             dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]
-            mobile:w-[20em]
+            mobile:w-full
             ${tasks.length === 0 ? "rounded": "rounded-b"} `}>
             <div className="text-[18px] font-josefin">
                 <p >{tasks.length} items left</p>
