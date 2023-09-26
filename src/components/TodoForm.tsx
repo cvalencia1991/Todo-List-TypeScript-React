@@ -109,7 +109,7 @@ const TodoForm = () => {
 
     const clearCompleted = () => {
         const newtasks: ITask[] = tasks.filter((task) => task.done === false);
-        setTaskState(newtasks);
+        setTaskState(prevState => prevState.filter((task) => task.done === false));
         setTasks(newtasks);
     };
 
