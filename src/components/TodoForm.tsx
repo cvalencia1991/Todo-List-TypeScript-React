@@ -89,6 +89,7 @@ const TodoForm = () => {
             return task;
         });
         setTasks(newtasks);
+        setTaskState(newtasks);
     };
 
 
