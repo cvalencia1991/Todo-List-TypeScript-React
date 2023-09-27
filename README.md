@@ -40,7 +40,7 @@ Users should be able to:
 
 - Solution URL: [Solution](https://github.com/cvalencia1991/Typescript-React)
 - Live Site URL: [live site here](https://todolistypescriptreact.netlify.app/)
-- 
+
 
 ## My process
 
@@ -71,7 +71,6 @@ This line of code give me the idea on how implement LocalStorage to save the inf
 - Implement diferents frameworks to work with
 - Update the states using Redux
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
