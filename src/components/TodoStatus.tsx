@@ -5,6 +5,7 @@ import { TodoStatusProps } from "../interfaces/ITask";
 const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:TodoStatusProps) => {
 
     return (
+        <>
         <div className={`container flex shadow-2xl text-[18px] font-josefin
             justify-between bg-[--very-light-gray] text-[--very-dark-grayish-blue]
             h-12 items-center px-4 relative desktop:w-[36em] mobile:w-80
@@ -43,6 +44,10 @@ const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:Tod
                 >Clear Completed</button>
             </div>
         </div>
+        <div>
+          <p>Drag and drop to reorder the list</p>
+        </div>
+        </>
     );
 };
 
