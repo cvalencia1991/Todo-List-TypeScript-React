@@ -13,6 +13,7 @@ const TaskForm: React.FC<TaskFormType> = ({ handleSubmit, handlekeypress, setNew
           type="checkbox"
           onChange={(e) => setNewTask({ ...newTask, done: e.target.checked })}
           checked={newTask.done}
+          aria-label="Mark as complete"
         />
       <input
         type="text"
@@ -22,6 +23,7 @@ const TaskForm: React.FC<TaskFormType> = ({ handleSubmit, handlekeypress, setNew
         onChange={(e) => setNewTask({ ...newTask, name: e.target.value })}
         value={newTask.name}
         onKeyDown={handlekeypress}
+        aria-label="Create a new todo..."
       />
     </div>
   </form>

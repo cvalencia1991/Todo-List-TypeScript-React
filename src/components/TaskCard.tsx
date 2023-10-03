@@ -37,10 +37,13 @@ const TaskCard = ({task, handleDelete, handleDone }:TaskCardProps) => {
                 type="checkbox"
                 onChange={handleChangeCheckbox}
                 checked={checked}
+                aria-label="Mark as complete"
                 />
                 <h2 className={`text-[18px] font-josefin text-[--very-dark-grayish-blue] dark:text-[--dark-grayish-blue] ${(checked ? "line-through text-[--very-dark-grayish-blue]" : "")}`}>{task.name}</h2>
             </div>
-                <button className= {`text-[--light-grayish-blue] hover:text-[--dark-grayish-blue] ${checked ? "hidden": "block"}`}
+                <button
+                className= {`text-[--light-grayish-blue] hover:text-[--dark-grayish-blue] ${checked ? "hidden": "block"}`}
+                aria-label="Delete Task"
                 onClick={() => handleDelete(task.id)}>
                 <IconCross/>
                 </button>

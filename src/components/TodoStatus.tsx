@@ -8,7 +8,7 @@ const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:Tod
 
         <>
         <div className={`container flex shadow-2xl text-[18px] font-josefin justify-between bg-[--very-light-gray] text-[--very-dark-grayish-blue]
-        h-12 items-center px-4 relative desktop:${tasks.length === 0 ? "w-[35em]": "w-full"} dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue] 
+        h-12 items-center px-4 relative desktop:${tasks.length === 0 ? "w-[35em]": "w-full"} dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]
             ${tasks.length === 0 ?  "mobile:w-[18em]" : "mobile:w-full desktop:w-full"}
             ${tasks.length === 0 ? "rounded mobile:width-[10em]": "rounded-b"} `}>
             <div className="text-[18px] font-josefin">
@@ -45,7 +45,8 @@ const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:Tod
                 aria-label="Clear Completed Tasks"
                 className="font-josefin text-[18px]
                 text-[--very-dark-grayish-blue]
-                hover:text-[--bringt-blue]"
+                hover:text-[--bringt-blue]
+                dark:text-[--light-grayish-blue] dark:hover:text-[--bringt-blue]"
                 >Clear Completed</button>
             </div>
         </div>
