@@ -93,11 +93,14 @@ const TodoForm = () => {
 
 
     const activeTask = () => {
-        setTasks(prev => prev.filter((task) => task.done === false));
+        const newtasks: ITask[] = tasksState.filter((task) => task.done === false);
+        console.log(newtasks);
+        setTasks(newtasks);
     };
 
     const completedTask = () => {
-        const newtasks: ITask[] = tasks.filter((task) => task.done === true);
+        const newtasks: ITask[] = tasksState.filter((task) => task.done === true);
+        console.log(newtasks);
         setTasks(newtasks);
     };
 
