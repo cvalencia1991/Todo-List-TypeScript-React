@@ -19,6 +19,8 @@ export interface TaskItem {
   completedTask: () => void;
   allTask: () => void;
   clearCompleted: () => void;
+  setTasks: (value: ITask[]) => void;
+  setTaskState: (value: ITask[]) => void;
 
 }
 
@@ -42,6 +44,12 @@ export interface View {
   handleDelete: (id: number) => void;
   task: ITask[];
   newTask: string;
+}
+
+export interface TaskCardProps {
+  task: ITask
+  handleDelete: (id: number) => void
+  handleDone: (id: number) => void
 }
 
 export type HandleForm = React.FormEvent<HTMLFormElement>

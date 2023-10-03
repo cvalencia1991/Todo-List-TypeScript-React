@@ -45,7 +45,7 @@ const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:Tod
             </div>
         </div>
         <div>
-          <p>Drag and drop to reorder the list</p>
+          <p className="font-josefin flex relative desktop:top-[1em] text-[--very-dark-grayish-blue] text-[18px] mobile:text-[14px] mobile:top-[5em]">Drag and drop to reorder the list</p>
         </div>
         </>
     );

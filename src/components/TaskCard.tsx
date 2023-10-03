@@ -1,14 +1,11 @@
 
 import IconCross from "../icons/Iconcross";
-import { ITask } from "../interfaces/ITask";
 import { useState } from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { TaskCardProps } from "../interfaces/ITask";
 
 
-interface TaskCardProps {
-    task: ITask
-    handleDelete: (id: number) => void
-    handleDone: (id: number) => void
-}
 
 const TaskCard = ({task, handleDelete, handleDone }:TaskCardProps) => {
 
@@ -18,9 +15,22 @@ const TaskCard = ({task, handleDelete, handleDone }:TaskCardProps) => {
         setChecked(!checked);
         handleDone(task.id);
     };
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: task.id });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
+
 
     return (
-        <>
+        < div
+        {...listeners}
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        className="flex items-center justify-between w-full h-full"
+        >
             <div className="flex items-center">
                 <input
                 className="appearance-none w-5 h-5 ml-4 mr-4 cursor-pointer rounded-full border border-[--dark-grayish-blue] checked:bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] "
@@ -34,7 +44,7 @@ const TaskCard = ({task, handleDelete, handleDone }:TaskCardProps) => {
                 onClick={() => handleDelete(task.id)}>
                 <IconCross/>
                 </button>
-        </>
+        </div>
     );
 };
 
