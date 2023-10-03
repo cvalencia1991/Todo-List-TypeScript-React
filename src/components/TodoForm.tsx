@@ -40,8 +40,7 @@ const TodoForm = () => {
         }
     }
     ,[]);
-
-
+  
     useEffect(() => {
         if(theme === "dark"){
             body.classList.add("dark");
@@ -88,6 +87,7 @@ const TodoForm = () => {
             }
             return task;
         });
+        setTaskState(newtasks);
         setTasks(newtasks);
         setTaskState(newtasks);
     };
@@ -100,6 +100,7 @@ const TodoForm = () => {
 
     const completedTask = () => {
         const newtasks: ITask[] = tasksState.filter((task) => task.done === true);
+
         setTasks(newtasks);
     };
 
@@ -109,7 +110,8 @@ const TodoForm = () => {
 
     const clearCompleted = () => {
         const newtasks: ITask[] = tasks.filter((task) => task.done === false);
-        setTaskState(prevState => prevState.filter((task) => task.done === false));
+
+        setTaskState(prev => prev.filter((task) => task.done === false));
         setTasks(newtasks);
     };
 
@@ -130,6 +132,8 @@ const TodoForm = () => {
         </div>
         <div className="flex relative -top-4 justify-center items-center w-full">
             <Taskview
+                setTasks={setTasks}
+                setTaskState={setTaskState}
                 activeTask={activeTask}
                 completedTask={completedTask}
                 allTask={allTask}
