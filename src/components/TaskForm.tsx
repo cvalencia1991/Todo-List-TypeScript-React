@@ -17,7 +17,7 @@ const TaskForm: React.FC<TaskFormType> = ({ handleSubmit, handlekeypress, setNew
       <input
         type="text"
         className="w-full h-11 ml-1  bg-[--very-light-gray] rounded text-[--dark-gray] placeholder-[--grayish-blue] text-[18px] font-josefin
-        focus:outline-none caret-[--very-dark-blue] hover:border-none hover:text-[--dark-gray] mobile:text-[14px]  dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]"
+        focus:outline-none caret-[--very-dark-blue] hover:border-none hover:text-[--dark-gray] dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]"
         placeholder="Create a new todo..."
         onChange={(e) => setNewTask({ ...newTask, name: e.target.value })}
         value={newTask.name}
