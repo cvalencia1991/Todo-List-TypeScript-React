@@ -40,7 +40,6 @@ const TodoForm = () => {
         }
     }
     ,[]);
-  
     useEffect(() => {
         if(theme === "dark"){
             body.classList.add("dark");
@@ -121,8 +120,9 @@ const TodoForm = () => {
         <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen mobile:bg-mobile-light dark:mobile:bg-mobile-dark desktop:bg-desktop-light bg-cover dark:desktop:bg-desktop-dark">
             <div className="flex justify-center  gap-4 flex-col desktop:w-[40em] mobile:w-80">
             <div className='flex justify-between items-center'>
-                <h1 className=" text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] font-josefin">TODO</h1>
+                <h1 className=" text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] dark:text-[--grayish-blue] font-josefin">TODO</h1>
                 <button
+                    aria-label="Change Theme"
                     onClick={handleTheme}>
                     {theme == "light" ? <IconMoon/> : <Iconsun/>}
                 </button>
