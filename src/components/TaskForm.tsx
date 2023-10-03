@@ -11,6 +11,7 @@ const TaskForm: React.FC<TaskFormType> = ({ handleSubmit, handlekeypress, setNew
           enabled:focus:border-[--dark-grayish-blue]
           checked:bg-gradient-to-r bg-no-repeat from-[--left-gradient] to-[--right-gradient] "
           type="checkbox"
+          id="checkbox"
           onChange={(e) => setNewTask({ ...newTask, done: e.target.checked })}
           checked={newTask.done}
           aria-label="Mark as complete"
