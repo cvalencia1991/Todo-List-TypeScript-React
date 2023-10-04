@@ -33,7 +33,7 @@ const TaskCard = ({task, handleDelete, handleDone }:TaskCardProps) => {
         >
             <div className="flex items-center">
                 <input
-                className="appearance-none w-5 h-5 ml-4 mr-4 cursor-pointer rounded-full border border-[--dark-grayish-blue] checked:bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] "
+                className="appearance-none w-5 h-5 ml-4 mr-4 cursor-pointer rounded-full border border-[--dark-grayish-blue] checked:bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] touch-none"
                 type="checkbox"
                 onChange={handleChangeCheckbox}
                 checked={checked}

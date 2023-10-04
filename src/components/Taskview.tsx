@@ -48,7 +48,7 @@ const Taskview = ({ tasks,setTaskState, setTasks, activeTask, completedTask,allT
         <li
           className={`flex items-center justify-between border-b px-4 bg-white h-12  font-josefin
           desktop:w-[36em] mobile:w-80 dark:bg-[--very-dark-desaturated-blue] text-[18px]
-          dark:border-[--light-grayish-blue] ${index === 0 ? "first:rounded-t" : ""}`}
+          dark:border-[--light-grayish-blue] touch-none ${index === 0 ? "first:rounded-t" : ""}`}
           key={task.id}>
           <TaskCard handleDelete={handleDelete}
           handleDone={handleDone}
