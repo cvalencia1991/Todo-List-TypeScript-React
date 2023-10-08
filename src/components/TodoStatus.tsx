@@ -7,10 +7,9 @@ const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:Tod
     return (
 
         <>
-        <div className={`container flex shadow-2xl text-[18px] desktop:w-[35em] font-josefin justify-between bg-[--very-light-gray] text-[--very-dark-grayish-blue]
-        h-12 items-center px-4 relative desktop:${tasks.length === 0 ? "w-full" : "w-[35em]"} dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]
-            ${tasks.length === 0 ?  "mobile:w-[28em]" : "mobile:w-full desktop:w-full"}
-            ${tasks.length === 0 ? "rounded mobile:width-[10em]": "rounded-b"} `}>
+        <div className={`container flex shadow-2xl text-[18px] desktop:${tasks.length === 0 ? "w-[35em]" : "w-screen"} font-josefin justify-between bg-[--very-light-gray] text-[--very-dark-grayish-blue]
+            h-12 items-center px-4 relative  dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]
+            mobile:${tasks.length === 0 ?  "w-[28em]" : "w-full"} ${tasks.length === 0 ? "rounded mobile:width-[10em]": "rounded-b"} `}>
             <div className="text-[18px] font-josefin">
                 <p >{tasks.length} items left</p>
             </div>
