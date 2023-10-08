@@ -7,7 +7,7 @@ const TodoStatus = ({tasks, activeTask,completedTask,allTask,clearCompleted}:Tod
     return (
 
         <>
-        <div className={`container flex shadow-2xl text-[18px] desktop:${tasks.length === 0 ? "w-[35em]" : "w-screen"} font-josefin justify-between bg-[--very-light-gray] text-[--very-dark-grayish-blue]
+        <div className={`container flex shadow-2xl desktop:w-[35em] text-[18px] desktop:${tasks.length === 0 ? "w-[35em]" : "w-full"} font-josefin justify-between bg-[--very-light-gray] text-[--very-dark-grayish-blue]
             h-12 items-center px-4 relative  dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]
             mobile:${tasks.length === 0 ?  "w-[28em]" : "w-full"} ${tasks.length === 0 ? "rounded mobile:width-[10em]": "rounded-b"} `}>
             <div className="text-[18px] font-josefin">
