@@ -39,7 +39,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution](https://github.com/cvalencia1991/Typescript-React)
-- Live Site URL: [live site here](https://main--todolistypescriptreact.netlify.app/)
+- Live Site URL: [live site here](https://todolistreactypescript.netlify.app/)
 
 
 ## My process
