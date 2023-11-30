@@ -1,55 +1,6 @@
-import React from "react";
 
-export interface ITask {
+export interface Task {
   name: string;
   id: number;
   done: boolean;
 }
-
-export interface Task {
-  name: string;
-  done: boolean;
-}
-
-export interface TaskItem {
-  tasks: ITask[];
-  handleDelete: (id: number) => void;
-  handleDone: (id: number) => void;
-  activeTask: () => void;
-  completedTask: () => void;
-  allTask: () => void;
-  clearCompleted: () => void;
-  setTasks: (value: ITask[]) => void;
-  setTaskState: (value: ITask[]) => void;
-
-}
-
-export interface TodoStatusProps {
-  tasks: Task[]
-  activeTask: () => void;
-  completedTask: () => void;
-  allTask: () => void;
-  clearCompleted: () => void;
-}
-
-
-export type TaskFormType = {
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  handlekeypress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  setNewTask: (value: React.SetStateAction<Task>) => void;
-  newTask: Task;
-};
-
-export interface View {
-  handleDelete: (id: number) => void;
-  task: ITask[];
-  newTask: string;
-}
-
-export interface TaskCardProps {
-  task: ITask
-  handleDelete: (id: number) => void
-  handleDone: (id: number) => void
-}
-
-export type HandleForm = React.FormEvent<HTMLFormElement>
