@@ -1,33 +1,27 @@
 import { useEffect, useState } from "react";
 import TaskForm from "./TaskForm";
 import { ITask, HandleForm, Task } from "../interfaces/ITask";
-import IconMoon from "../icons/icon-moon";
 import Taskview from "./Taskview";
-import Iconsun from "../icons/icon-sun";
+import initialTaskState from "../utils/database";
+import TaskTheme from "./TaskTheme";
 
 
 const TodoForm = () => {
 
-    const initialTaskState = {
-        name: "",
-        done: false,
-    };
-    const body = document.querySelector("body") as HTMLBodyElement;
-
     const [keyB, setKeyB] = useState<string>("");
-    const [newTask, setNewTask] = useState<Task>(initialTaskState);
+    const [newTask, setNewTask] = useState<Task[]>(initialTaskState);
+
     const [tasks, setTasks] = useState<ITask[]>(()=>{
         const localTasks = localStorage.getItem("tasks");
         return localTasks ? JSON.parse(localTasks) : [];
     });
+
     const [tasksState,setTaskState] = useState<ITask[]>(()=>{
         const localTasks = localStorage.getItem("tasks");
         return localTasks ? JSON.parse(localTasks) : [];
     });
 
-    const [theme, setTheme] = useState<string>(()=>{
-       return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    });
+
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasksState));
@@ -40,20 +34,10 @@ const TodoForm = () => {
         }
     }
     ,[]);
-    useEffect(() => {
-        if(theme === "dark"){
-            body.classList.add("dark");
-            body.classList.add("bg-[#161722]");
-        }else{
-            body.classList.remove("dark");
-            body.classList.remove("bg-[#161722]");
-        }
-    }, [theme]);
-
 
     const handleSubmit = (e: HandleForm) => {
         e.preventDefault();
-        addTasks(newTask.name, newTask.done);
+        addTasks(newTask[0].name, newTask[0].done);
     };
 
     const handlekeypressed = (event: React.KeyboardEvent<HTMLInputElement>): void =>{
@@ -65,7 +49,7 @@ const TodoForm = () => {
         const newtasks: ITask[] = [...tasks, { name, done, id: Math.random()}];
         setTasks(newtasks);
         setTaskState(newtasks);
-        setNewTask({name: "", done: false});
+        setNewTask([{name: "", done: false}]);
         }
     };
 
@@ -75,9 +59,6 @@ const TodoForm = () => {
         setTaskState(newtasks);
     };
 
-    const handleTheme = () => {
-        setTheme(theme === "light" ? "dark" : "light");
-    };
 
     const handleDone = (id: number) => {
         const newtasks: ITask[] = tasks.map((task) => {
@@ -114,36 +95,19 @@ const TodoForm = () => {
         setTasks(newtasks);
     };
 
-
     return (
-    <>
-        <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen mobile:bg-mobile-light dark:mobile:bg-mobile-dark desktop:bg-desktop-light bg-cover dark:desktop:bg-desktop-dark">
-            <div className="flex justify-center  gap-4 flex-col desktop:w-[40em] mobile:w-80">
-            <div className='flex justify-between items-center'>
-                <h1 className=" text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] dark:text-[--grayish-blue] font-josefin">TODO</h1>
-                <button
-                    aria-label="Change Theme"
-                    onClick={handleTheme}>
-                    {theme == "light" ? <IconMoon/> : <Iconsun/>}
-                </button>
+        <div className="flex flex-col items-center justify-center bg-no-repeat h-72 w-screen bg-cover  mobile:bg-mobile-light dark:mobile:bg-mobile-dark desktop:bg-desktop-light  dark:desktop:bg-desktop-dark">
+            <div>
+                <TaskTheme/>
             </div>
-            <TaskForm handlekeypress={handlekeypressed} handleSubmit={handleSubmit}  setNewTask={setNewTask} newTask={newTask} />
+            <div>
+                {/* <TaskForm handlekeypress={handlekeypressed} handleSubmit={handleSubmit}  newTask={setNewTask} newTask={newTask} /> */}
+            </div>
+            <div>
+                <Taskview setTasks={setTasks} setTaskState={setTaskState} activeTask={activeTask} completedTask={completedTask} allTask={allTask} clearCompleted={clearCompleted} handleDone={handleDone} tasks={tasks} handleDelete={handleDelete} />
             </div>
         </div>
-        <div className="flex relative -top-4 justify-center items-center w-full">
-            <Taskview
-                setTasks={setTasks}
-                setTaskState={setTaskState}
-                activeTask={activeTask}
-                completedTask={completedTask}
-                allTask={allTask}
-                clearCompleted={clearCompleted}
-                handleDone={handleDone}
-                tasks={tasks}
-                handleDelete={handleDelete}
-            />
-        </div>
-    </>
+
     );
 };
 
