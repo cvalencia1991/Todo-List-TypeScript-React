@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Task } from "../interfaces/ITask";
-import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
-import { deleteTask,setTasks } from "../redux/features/tasks/tasksSlice";
+import { useAppDispatch } from "../redux/hooks/hooks";
+import { deleteTask,doneTask } from "../redux/features/tasks/tasksSlice";
 
 interface TaskCardProps {
     task: Task;
@@ -15,17 +15,10 @@ const TaskCard: React.FC<TaskCardProps> = ({task}) => {
 
     const dispatch = useAppDispatch();
     const [checked, setChecked] = useState<boolean>(task.done);
-    const tasks = useAppSelector((state) => state.tasks.tasks);
 
     const handleChangeCheckbox = () => {
         setChecked(!checked);
-        const newTasks = tasks.map((t) => {
-            if (t.id === task.id) {
-                return { ...t, done: !checked };
-            }
-            return t;
-        });
-        dispatch(setTasks(newTasks));
+        dispatch(doneTask(task.id));
 
     };
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: task.id });
@@ -46,7 +39,7 @@ const TaskCard: React.FC<TaskCardProps> = ({task}) => {
         >
             <div className="flex items-center">
                 <input
-                className="appearance-none w-5 h-5  ml-4 mr-4 cursor-pointer rounded-full desktop:p-3 border border-[--dark-grayish-blue] checked:bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] touch-none"
+                className="appearance-none w-5 h-5  ml-4 mr-4 cursor-pointer rounded-full desktop:p-3 border border-[--dark-grayish-blue] checked:bg-icon-check bg-no-repeat bg-center touch-none"
                 type="checkbox"
                 id={task.id.toString()}
                 onChange={handleChangeCheckbox}
