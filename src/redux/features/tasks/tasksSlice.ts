@@ -13,35 +13,36 @@ export const tasksSlice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action: PayloadAction<Task>) => {
-            state.push(action.payload);
+            state.tasks.push(action.payload);
         },
         setTasks: (state, action: PayloadAction<Task[]>) => {
-            state.length = 0;
-            state.push(...action.payload);
+            state.tasks.length = 0;
+            state.tasks.push(...action.payload);
         },
         deleteTask: (state, action: PayloadAction<number>) => {
-            state = state.filter((task) => task.id !== action.payload);
-            return state;
+            const index = state.tasks.findIndex((task) => task.id === action.payload);
+            if (index !== -1) {
+                state.tasks.splice(index, 1);
+            }
         },
         doneTask: (state, action: PayloadAction<number>) => {
-            const index = state.findIndex((task) => task.id === action.payload);
-            state[index].done = !state[index].done;
+            const index = state.tasks.findIndex((task) => task.id === action.payload);
+            state.tasks[index].done = !state.tasks[index].done;
         },
         activeTask: (state) => {
-            state = state.filter((task) => task.done === false);
-            return state;
-        },
-        completedTask: (state) => {
-            state = state.filter((task) => task.done === true);
-            return state;
-        },
-        allTask: (state) => {
-           state = state.filter((task) => task.done === true || task.done === false);
-           return state;
-        },
+            state.originalTasks = state.tasks.slice();
+            state.tasks = state.tasks.filter((task) => task.done === false);
+          },
+          completedTask: (state) => {
+            state.originalTasks = state.tasks.slice();
+            state.tasks = state.tasks.filter((task) => task.done === true);
+          },
+          allTask: (state) => {
+            state.tasks = state.originalTasks.slice();
+          },
         clearCompleted: (state) => {
-            state = state.filter((task) => task.done === false);
-            return state;
+            state.tasks = state.tasks.filter((task) => task.done === false);
+            state.originalTasks = state.originalTasks.filter((task) => task.done === false);
         },
     },
 });

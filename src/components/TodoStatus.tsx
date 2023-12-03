@@ -5,7 +5,7 @@ import { clearCompleted,completedTask, allTask, activeTask } from "../redux/feat
 
 const TodoStatus = () => {
 
-    const tasks =  useAppSelector(state => state.tasks);
+    const tasks =  useAppSelector(state => state.tasks.tasks);
     const dispatch = useAppDispatch();
 
     return (

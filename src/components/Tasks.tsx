@@ -10,7 +10,7 @@ import TodoStatus from "./TodoStatus";
 
 const Tasks = () => {
 
-    const tasks =  useAppSelector(state => state.tasks);
+    const tasks =  useAppSelector(state => state.tasks.tasks);
     const dispatch = useAppDispatch();
 
     const handleDragend = (e: DragEndEvent): void => {
