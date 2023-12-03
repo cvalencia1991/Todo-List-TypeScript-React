@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Screenshot
 
-![screenshot](./images/ScreenshotDesktop.png)
+![screenshot](./public/images/ScreenshotDesktop.png)
 
 ### Links
 
@@ -68,9 +68,7 @@ This line of code give me the idea on how implement LocalStorage to save the inf
 
 ### Continued development
 
-- Implement diferents frameworks to work with
-- Update the states using Redux
-
+- Implement diferents frameworks to work with.
 
 ### Useful resources
 
