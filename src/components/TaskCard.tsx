@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Task } from "../interfaces/ITask";
-import { useAppDispatch } from "../redux/hooks/hooks";
-import { deleteTask } from "../redux/features/tasks/tasksSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
+import { deleteTask,setTasks } from "../redux/features/tasks/tasksSlice";
 
 interface TaskCardProps {
     task: Task;
@@ -15,9 +15,18 @@ const TaskCard: React.FC<TaskCardProps> = ({task}) => {
 
     const dispatch = useAppDispatch();
     const [checked, setChecked] = useState<boolean>(task.done);
+    const tasks = useAppSelector((state) => state.tasks.tasks);
 
     const handleChangeCheckbox = () => {
         setChecked(!checked);
+        const newTasks = tasks.map((t) => {
+            if (t.id === task.id) {
+                return { ...t, done: !checked };
+            }
+            return t;
+        });
+        dispatch(setTasks(newTasks));
+
     };
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: task.id });
 
