@@ -6,8 +6,6 @@ import { useAppSelector,useAppDispatch } from "../redux/hooks/hooks";
 import { setTasks } from "../redux/features/tasks/tasksSlice";
 import TodoStatus from "./TodoStatus";
 
-
-
 const Tasks = () => {
 
     const tasks =  useAppSelector(state => state.tasks.tasks);

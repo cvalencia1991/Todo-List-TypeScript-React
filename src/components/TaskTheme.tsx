@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import Iconsun from "../icons/icon-sun";
 import IconMoon from "../icons/icon-moon";
 
-function TaskTheme() {
+const  TaskTheme = () => {
 
     const [theme, setTheme] = useState<string>("dark");
     const body = document.querySelector("body") as HTMLBodyElement;
@@ -27,7 +27,7 @@ function TaskTheme() {
         <button aria-label="Change Theme" onClick={handleTheme}> {theme == "light" ? <IconMoon/> : <Iconsun/>} </button>
     </div>
   );
-}
+};
 
 
 export default TaskTheme;
