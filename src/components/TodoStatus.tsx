@@ -15,7 +15,7 @@ const TodoStatus = () => {
             <div className=" text-[18px] font-josefin desktop:flex desktop:items-center desktop:justify-center">
                 <p >{tasks.length} items left</p>
             </div>
-            <div className="row-start-2 col-span-2 flex  absolute top-12 h-12 items-center gap-4 rounded-md justify-center w-full bg-[--very-dark-desaturated-blue] desktop:static desktop:w-auto desktop:bg-transparentn desktop:items-center desktop:justify-center dekstop:top-0">
+            <div className="row-start-2 col-span-2 flex  absolute top-12 h-12 items-center gap-4  bg-white rounded-md justify-center w-full bg-[--very-dark-desaturated-blue] desktop:static desktop:w-auto desktop:bg-transparentn desktop:items-center desktop:justify-center dekstop:top-0 dark:bg-[--very-dark-desaturated-blue]">
                 <button
                 aria-label="Select All Tasks"
                 onClick={() => dispatch(allTask())}
