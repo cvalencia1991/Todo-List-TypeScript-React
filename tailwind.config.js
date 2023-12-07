@@ -12,7 +12,7 @@ module.exports = {
         'desktop-dark': "url('/public/images/bg-desktop-dark.jpg')",
         'mobile-light': "url('/public/images/bg-mobile-light.jpg')",
         'mobile-dark': "url('/public/images/bg-mobile-dark.jpg')",
-        'icon-check': "linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)), url('/public/images/icon-check.svg')",
+        'icon-check': "url('/public/images/icon-check.svg')",
       },
       fontFamily: {
         'josefin': ['Josefin Sans', 'sans-serif'],

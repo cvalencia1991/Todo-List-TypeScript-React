@@ -12,7 +12,7 @@ const TodoForm = () => {
                     <TaskForm />
                     <Tasks />
                 </div>
-                <div className="absolute bottom-0 w-screen h-20 bg-white"></div>
+                {/* <div className=" bottom-0 w-screen bg-white h-20 desktop:h-24"></div> */}
             </div>
     );
 };

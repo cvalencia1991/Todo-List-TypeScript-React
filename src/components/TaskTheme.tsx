@@ -23,7 +23,7 @@ const  TaskTheme = () => {
 
   return(
     <div className='flex justify-between items-center w-full'>
-        <h1 className="flex justify-start text-[30px] tracking-[0.5em] font-bold text-[--very-light-gray] dark:text-[--grayish-blue] font-josefin">TODO</h1>
+        <h1 className="flex justify-start text-4xl tracking-[0.5em] font-bold text-[--very-light-gray] dark:text-[--grayish-blue] font-josefin">TODO</h1>
         <button aria-label="Change Theme" onClick={handleTheme}> {theme == "light" ? <IconMoon/> : <Iconsun/>} </button>
     </div>
   );

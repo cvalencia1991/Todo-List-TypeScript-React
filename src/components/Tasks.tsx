@@ -28,7 +28,7 @@ const Tasks = () => {
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 10 }}),);
 
   return (
-    <div className="flex flex-col absolute rounded top-36 w-full">
+    <div className="flex flex-col absolute rounded top-36 w-full ">
       <ul>
         <DndContext collisionDetection={closestCorners} onDragEnd={handleDragend} sensors={sensors}>
           <SortableContext
@@ -44,7 +44,7 @@ const Tasks = () => {
           )}
           </SortableContext>
           <li><TodoStatus /></li>
-          <li className="relative top-28 desktop:top-8"><p className="font-josefin flex text-center relative items-center justify-center dark:text-[--light-grayish-blue] text-[--very-dark-grayish-blue] text-[18px]">Drag and drop to reorder the list</p></li>
+          <li className="relative top-28 desktop:top-8 "><p className="font-josefin flex text-center  text-base relative items-center justify-center dark:text-[--light-grayish-blue] text-[--very-dark-grayish-blue] text-[18px]">Drag and drop to reorder the list</p></li>
         </DndContext>
         </ul>
     </div>

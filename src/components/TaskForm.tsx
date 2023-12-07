@@ -25,15 +25,11 @@ const TaskForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
-      <form onSubmit={handleSubmit}>
-        <div className="flex rounded px-4 bg-[--very-light-gray] items-center justify-evenly desktop:h-16 dark:bg-[--very-dark-desaturated-blue]">
+    <div className=" flex w-full">
+      <form className="flex w-full" onSubmit={handleSubmit}>
+        <div className="flex w-full rounded px-4 bg-[--very-light-gray] items-center justify-evenly desktop:h-16 dark:bg-[--very-dark-desaturated-blue]">
         <input
-          className={`appearance-none w-6 h-5 ml-3 mr-[10px] cursor-pointer rounded-full desktop:p-3 border border-[--dark-grayish-blue] enabled:focus:border-[--dark-grayish-blue] ${
-            task.done
-              ? "checked:bg-icon-check touch-none"
-              : ""
-          }`}
+          className={`appearance-none w-6 h-5 mx-4 mr-[10px] cursor-pointer rounded-full desktop:p-3 border border-[--dark-grayish-blue] enabled:focus:border-[--dark-grayish-blue] ${task.done ? "checked:bg-icon-check bg-no-repeat bg-center bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] touch-none": "bg-no-repeat bg-center"}`}
           type="checkbox"
           id="checkbox"
           onChange={() => setTask({ ...task, done: !task.done })}
@@ -41,7 +37,7 @@ const TaskForm: React.FC = () => {
         />
           <input
             type="text"
-            className="w-full h-11 ml-1  bg-[--very-light-gray] rounded text-[--dark-gray] placeholder-[--grayish-blue] text-[18px] font-josefin
+            className="w-full h-11 bg-[--very-light-gray] rounded text-[--dark-gray] placeholder-[--grayish-blue] text-[18px] font-josefin
             focus:outline-none caret-[--very-dark-blue] hover:border-none hover:text-[--dark-gray] dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]"
             placeholder="Create a new todo..."
             aria-label="Create a new todo..."
