@@ -10,12 +10,12 @@ const TodoStatus = () => {
 
     return (
 
-        <div className={`grid  grid-cols-2 grid-rows-2 mobile:grid shadow-2xl w-full  text-base font-josefin justify-items-center bg-[--very-light-gray] text-[--very-dark-grayish-blue] h-12 relative  desktop:flex desktop:justify-around desktop:h-auto desktop:bg-none dark:bg-[--very-dark-desaturated-blue] dark:text-[--light-grayish-blue]
+        <div className={`grid grid-cols-2 grid-rows-1 shadow-2xl w-full text-base font-josefin justify-items-center place-items-center bg-[--very-light-gray] text-[--very-dark-grayish-blue] h-12 relative desktop:flex desktop:justify-around desktop:h-auto desktop:bg-none dark:bg-[--very-dark-desaturated-blue] desktop:grid-rows-3 dark:text-[--light-grayish-blue]
             ${tasks.length === 0 ? "rounded": "rounded-b"} `}>
-            <div className="  text-base font-josefin desktop:flex desktop:items-center desktop:justify-center">
+            <div className="text-base font-josefin desktop:flex desktop:items-center desktop:justify-center">
                 <p >{tasks.length} items left</p>
             </div>
-            <div className="row-start-2 col-span-2 flex  text-base   absolute top-12 h-12 items-center gap-4  bg-transparent rounded-md justify-center w-full desktop:static desktop:w-auto desktop:bg-transparentn desktop:items-center desktop:justify-center dekstop:top-0 dark:bg-[--very-dark-desaturated-blue]">
+            <div className="row-start-2 col-span-2 flex  text-base  absolute top-12 h-12 items-center gap-4 border-solid bg-white  shadow-xl rounded-md justify-center w-full desktop:static desktop:w-auto desktop:shadow-none desktop:bg-transparent desktop:items-center desktop:justify-center dekstop:top-0 dark:bg-[--very-dark-desaturated-blue]">
                 <button
                 aria-label="Select All Tasks"
                 onClick={() => dispatch(allTask())}

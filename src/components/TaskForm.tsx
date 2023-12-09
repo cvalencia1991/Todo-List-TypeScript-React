@@ -28,13 +28,15 @@ const TaskForm: React.FC = () => {
     <div className=" flex w-full">
       <form className="flex w-full" onSubmit={handleSubmit}>
         <div className="flex w-full rounded px-4 bg-[--very-light-gray] items-center justify-evenly desktop:h-16 dark:bg-[--very-dark-desaturated-blue]">
-        <input
-          className={`appearance-none w-6 h-5 mx-4 mr-[10px] cursor-pointer rounded-full desktop:p-3 border border-[--dark-grayish-blue] enabled:focus:border-[--dark-grayish-blue] ${task.done ? "checked:bg-icon-check bg-no-repeat bg-center bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] touch-none": "bg-no-repeat bg-center"}`}
-          type="checkbox"
-          id="checkbox"
-          onChange={() => setTask({ ...task, done: !task.done })}
-          aria-label="Mark as complete"
-        />
+          <div className={`flex items-center justify-center mx-4 w-6 h-5 desktop:w-6 desktop:h-5 ${task.done ? "bg-gradient-to-r from-[--left-gradient] to-[--right-gradient] rounded-full": "bg-transparent border rounded-full hover:border-gradient-to-r hover:from-[--left-gradient] hover:to-[--right-gradient]"}`}>
+            <input
+            className={`appearance-none cursor-pointer p-2 border-none border-[--dark-grayish-blue] enabled:focus:border-[--dark-grayish-blue] ${task.done ? "checked:bg-icon-check bg-no-repeat bg-center touch-none": ""}`}
+            type="checkbox"
+            id="checkbox"
+            onChange={() => setTask({ ...task, done: !task.done })}
+            aria-label="Mark as complete"
+          />
+          </div>
           <input
             type="text"
             className="w-full h-11 bg-[--very-light-gray] rounded text-[--dark-gray] placeholder-[--grayish-blue] text-[18px] font-josefin
