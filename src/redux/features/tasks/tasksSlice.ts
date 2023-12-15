@@ -26,23 +26,21 @@ export const tasksSlice = createSlice({
     },
     doneTask: (state, action: PayloadAction<number>) => {
       const index = state.tasks.findIndex((task) => task.id === action.payload);
-      state.tasks[index].done = !state.tasks[index].done;
-      state.originalTasks = state.tasks.map((task) => ({ ...task }));
+      const updatedTasks = [...state.tasks];
+      updatedTasks[index].done = !updatedTasks[index].done;
+      state.originalTasks = state.originalTasks.map((task) =>
+        task.id === action.payload ? { ...task, done: updatedTasks[index].done } : task
+      );
+      state.tasks = updatedTasks;
     },
     activeTask: (state) => {
-      if (state.originalTasks.length === 0) {
-        state.originalTasks = state.tasks.map((task) => ({ ...task }));
-      }
       state.tasks = state.originalTasks.filter((task) => task.done === false);
     },
     completedTask: (state) => {
-      if (state.originalTasks.length === 0) {
-        state.originalTasks = state.tasks.map((task) => ({ ...task }));
-      }
       state.tasks = state.originalTasks.filter((task) => task.done === true);
     },
     allTask: (state) => {
-      state.tasks = state.originalTasks.length > 0 ? state.originalTasks.slice() : state.tasks.slice();
+      state.tasks = state.originalTasks;
     },
     clearCompleted: (state) => {
       state.tasks = state.tasks.filter((task) => task.done === false);
