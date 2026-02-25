@@ -1,20 +1,15 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TaskTheme from "../components/TaskTheme";
 import "@testing-library/jest-dom";
 
 describe("TaskTheme", () => {
-
   beforeEach(() => {
     render(<TaskTheme />);
   });
 
   it("should render header", () => {
-    screen.debug();
-  });
-
-  test("Header the todo", async () => {
-    const todoTextElement =  screen.getByText(/TODO/i);
+    const todoTextElement = screen.getByText(/TODO/i);
     expect(todoTextElement).toBeInTheDocument();
   });
 
@@ -22,12 +17,15 @@ describe("TaskTheme", () => {
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toBeInTheDocument();
   });
-  test("should change theme", () => {
-    const buttonElement = screen.getByRole("button");
-    userEvent.click(buttonElement);
-    waitFor(() => {
-      expect(document.body.classList.contains("dark")).toBe(true);
-    });
+
+  test("should keep dark theme enabled by default", () => {
+    expect(document.body.classList.contains("dark")).toBe(true);
   });
 
+  test("should change theme", async () => {
+    const buttonElement = screen.getByRole("button");
+    await userEvent.click(buttonElement);
+
+    expect(document.body.classList.contains("dark")).toBe(false);
+  });
 });
