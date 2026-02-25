@@ -1,40 +1,41 @@
-import { State } from "../interfaces/ITask";
+import { State, Task } from "../interfaces/ITask";
 
-const initialTaskState:State = {
-    tasks:  [
-        {
-        name: "complete  online JavaScript course",
-        done: true,
-        id: 1,
-        },
-        {
-        name: "Jog around the park 3x",
-        done: false,
-        id: 2,
-        },
-        {
-        name: "10 minutes meditation",
-        done: false,
-        id: 3,
-        },
-        {
-        name: "Read for 1 hour",
-        done: false,
-        id: 4,
-        },
-        {
-        name: "Pick up groceries",
-        done: false,
-        id: 5,
-        },
-        {
-        name: "Complete Todo App on Frontend Mentor",
-        done: false,
-        id: 6,
-        },
-    ],
-    originalTasks: [],
-  };
+const seedTasks: Task[] = [
+  {
+    name: "complete  online JavaScript course",
+    done: true,
+    id: 1,
+  },
+  {
+    name: "Jog around the park 3x",
+    done: false,
+    id: 2,
+  },
+  {
+    name: "10 minutes meditation",
+    done: false,
+    id: 3,
+  },
+  {
+    name: "Read for 1 hour",
+    done: false,
+    id: 4,
+  },
+  {
+    name: "Pick up groceries",
+    done: false,
+    id: 5,
+  },
+  {
+    name: "Complete Todo App on Frontend Mentor",
+    done: false,
+    id: 6,
+  },
+];
 
+const initialTaskState: State = {
+  tasks: seedTasks,
+  originalTasks: seedTasks.map((task) => ({ ...task })),
+};
 
 export default initialTaskState;
